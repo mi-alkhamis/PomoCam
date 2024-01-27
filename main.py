@@ -83,12 +83,13 @@ class Pomodoro:
             The type of the break, can be "short" or "long".
         """
         self.session_type = session_type
-        if self.session_type == "short":
-            self.msg = BREAK_MSG
-            self.timer(self.short_break_time, self.session_type, self.msg)
-        elif self.session_type == "long":
-            self.msg = BREAK_MSG
-            self.timer(self.long_break_time, self.session_type, self.msg)
+        match self.session_type:
+            case "short":
+                self.msg = BREAK_MSG
+                self.timer(self.short_break_time, self.session_type, self.msg)
+            case "long":
+                self.msg = BREAK_MSG
+                self.timer(self.long_break_time, self.session_type, self.msg)
         self.type = self.update(self.type)
 
     def update(self, session_type):
